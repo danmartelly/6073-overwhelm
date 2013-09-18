@@ -8,7 +8,10 @@ package
 	 
 	public class PlayState extends FlxState
 	{
+		//Player vars
 		public var player:FlxSprite;
+		public var player_height = 10;
+		public var player_width = 20;
 		
 		override public function create():void
 		{
@@ -16,9 +19,8 @@ package
 			
 			//Adding the player.
 			player = new FlxSprite(0, 0);
-			player.makeGraphic(10, 20, 0xffff0000);
+			player.makeGraphic(player_width, player_height, 0xffff0000);
 			player.maxVelocity.x = 160;
-			player.maxVelocity.y = 450;
 			player.drag.x = player.maxVelocity.x * 6;
 			add(player);
 			
@@ -26,6 +28,7 @@ package
 		
 		override public function update():void
 		{
+			//Player movement
 			player.acceleration.x = 0;
 			if(FlxG.keys.LEFT)
 				player.acceleration.x = -player.maxVelocity.x*4;
