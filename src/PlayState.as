@@ -14,7 +14,7 @@ package
 		
 		override public function create():void
 		{
-			someText = new FlxText(0, 0, 100, "Overwhelm!");
+			someText = new FlxText(0, 0, 150, "Overwhelm!");
 			add(someText);
 			_timer = 0;
 			
@@ -24,6 +24,7 @@ package
 			
 			//Adding falling objects
 			_fallingObjects = new FlxGroup();
+			add(_fallingObjects);
 		}
 		
 		override public function destroy():void
@@ -41,7 +42,7 @@ package
 			//make new falling objects
 			_timer += FlxG.elapsed;
 			someText.text = _timer.toString();
-			var limit:uint = 10;
+			var limit:uint = 3;
 			if (_timer > limit)
 			{
 				_timer = 0;
@@ -55,7 +56,13 @@ package
 		{
 			var xPos:Number = 20;
 			var yPos:Number = 20;
-			(_fallingObjects.recycle(fallingObject) as fallingObject).init(xPos, yPos);
+			var fallObj:FallingObject = (_fallingObjects.recycle(FallingObject) as FallingObject);
+			
+			if (fallObj == null)
+			{
+				var newFallObj:FallingObject = new FallingObject();
+				_fallingObjects.add(newFallObj);
+			}
 		}
 	}
 

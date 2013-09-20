@@ -5,8 +5,8 @@ package
 	public class Player extends FlxSprite
 	{
 		//Player vars
-		public var player_height = 10;
-		public var player_width = 20;
+		public var player_height:Number = 10;
+		public var player_width:Number = 20;
 		
 		public function Player(X:int,Y:int) 
 		{
