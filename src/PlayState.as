@@ -1,42 +1,62 @@
 package  
 {
-	/**
-	 * @author Martelly
-	 */
-	
 	import org.flixel.*;
 	 
 	public class PlayState extends FlxState
 	{
-		//Player vars
-		public var player:FlxSprite;
-		public var player_height = 10;
-		public var player_width = 20;
+		public var someText:FlxText;
+		
+		//major game object storage
+		protected var _player:Player;
+		protected var _fallingObjects:FlxGroup;
+		
+		private var _timer:Number;
 		
 		override public function create():void
 		{
-			add(new FlxText(0, 0, 100, "Overwhelm!"));
+			someText = new FlxText(0, 0, 100, "Overwhelm!");
+			add(someText);
+			_timer = 0;
 			
 			//Adding the player.
-			player = new FlxSprite(0, 0);
-			player.makeGraphic(player_width, player_height, 0xffff0000);
-			player.maxVelocity.x = 160;
-			player.drag.x = player.maxVelocity.x * 6;
-			add(player);
+			_player = new Player(0, 0);
+			add(_player);
 			
+			//Adding falling objects
+			_fallingObjects = new FlxGroup();
+		}
+		
+		override public function destroy():void
+		{
+			super.destroy();
+			
+			_fallingObjects = null;
 		}
 		
 		override public function update():void
 		{
-			//Player movement
-			player.acceleration.x = 0;
-			if(FlxG.keys.LEFT)
-				player.acceleration.x = -player.maxVelocity.x*4;
-			if(FlxG.keys.RIGHT)
-				player.acceleration.x = player.maxVelocity.x*4;
+			//collisions
+			FlxG.collide(_fallingObjects, _player);
+			
+			//make new falling objects
+			_timer += FlxG.elapsed;
+			someText.text = _timer.toString();
+			var limit:uint = 10;
+			if (_timer > limit)
+			{
+				_timer = 0;
+				makeFallingObject();
+			}
 			
 			super.update();
 		}						
+		
+		public function makeFallingObject():void
+		{
+			var xPos:Number = 20;
+			var yPos:Number = 20;
+			(_fallingObjects.recycle(fallingObject) as fallingObject).init(xPos, yPos);
+		}
 	}
 
 }
