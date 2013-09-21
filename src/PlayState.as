@@ -9,6 +9,7 @@ package
 		//major game object storage
 		protected var _player:Player;
 		protected var _fallingObjects:FlxGroup;
+		protected var _ui:UI;
 		
 		private var _timer:Number;
 		
@@ -19,12 +20,20 @@ package
 			_timer = 0;
 			
 			//Adding the player.
-			_player = new Player(0, 0);
+			
+			//UI 1 - Big right bar
+			_player = new Player(115, 225);
+			//UI 2 - Big bottom bar
+			//_player = new Player(155, 200);
 			add(_player);
 			
 			//Adding falling objects
 			_fallingObjects = new FlxGroup();
 			add(_fallingObjects);
+			
+			//Adding UI
+			_ui = new UI();
+			add(_ui);
 		}
 		
 		override public function destroy():void
@@ -38,6 +47,7 @@ package
 		{
 			//collisions
 			FlxG.collide(_fallingObjects, _player);
+			FlxG.collide(_ui, _player);
 			
 			//make new falling objects
 			_timer += FlxG.elapsed;
