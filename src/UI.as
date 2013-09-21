@@ -72,6 +72,10 @@ package
 			this.add(goalimage);
 		}
 		
+		public function updateUI(score:Number, health:Number):void {
+			scorevallabel.text = "" + score;
+			livesvallabel.text = "" + health;
+		}
 	}
 
 }

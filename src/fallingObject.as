@@ -17,23 +17,14 @@ package
 			angularVelocity = 10;
 		}
 		
-		override public function update():void 
-		{
-			if (!alive)
-			{
-				if (finished)
-				{
-					
-				}
-			}
-		}
-		
 		public function init(xPos:int, yPos:int):void
 		{
 			x = xPos;
 			y = yPos;
 			velocity.y = 0;
 			acceleration.y = 80;
+			alive = true;
+			exists = true;
 			
 			makeGraphic(width, height, 0xffaaaaaa);
 		}

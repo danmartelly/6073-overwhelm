@@ -46,13 +46,17 @@ package
 		override public function update():void
 		{
 			//collisions
-			FlxG.collide(_fallingObjects, _player);
+			FlxG.overlap(_fallingObjects, _player, caughtObject);
 			FlxG.collide(_ui, _player);
+			FlxG.overlap(_fallingObjects, _ui, uncaughtObject);
+			
+			//update hud
+			_ui.updateUI(_player.score, _player.health);
 			
 			//make new falling objects
 			_timer += FlxG.elapsed;
 			someText.text = _timer.toString();
-			var limit:uint = 3;
+			var limit:uint = 1;
 			if (_timer > limit)
 			{
 				_timer = 0;
@@ -60,11 +64,22 @@ package
 			}
 			
 			super.update();
-		}						
+		}				
+		
+		public function caughtObject(fallObj:FlxSprite, player:FlxSprite):void
+		{
+			fallObj.kill();
+			_player.hurt(-1);
+		}
+		
+		public function uncaughtObject(fallObj:FlxSprite, ui:FlxSprite) {
+			fallObj.kill();
+			_player.hurt(1);
+		}
 		
 		public function makeFallingObject():void
 		{
-			var xPos:Number = 20;
+			var xPos:Number = FlxG.random()*200;
 			var yPos:Number = 20;
 			var fallObj:FallingObject = (_fallingObjects.recycle(FallingObject) as FallingObject);
 			
@@ -73,7 +88,6 @@ package
 				var newFallObj:FallingObject = new FallingObject();
 				_fallingObjects.add(newFallObj);
 			}
-			
 			fallObj.init(xPos, yPos);
 		}
 	}
