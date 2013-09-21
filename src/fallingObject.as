@@ -9,15 +9,12 @@ package
 		
 		public function FallingObject() 
 		{
-			super();
+			super(0,0);
 			width = 10;
 			height = 10;
 			
-			speed = -50;
-			maxVelocity.y=-200;
-			angularVelocity = 1;
-			
-			makeGraphic(width, height, 0xffaaaaaa);
+			maxVelocity.y=200;
+			angularVelocity = 10;
 		}
 		
 		override public function update():void 
@@ -35,6 +32,10 @@ package
 		{
 			x = xPos;
 			y = yPos;
+			velocity.y = 0;
+			acceleration.y = 80;
+			
+			makeGraphic(width, height, 0xffaaaaaa);
 		}
 	}
 

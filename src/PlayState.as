@@ -63,6 +63,8 @@ package
 				var newFallObj:FallingObject = new FallingObject();
 				_fallingObjects.add(newFallObj);
 			}
+			
+			fallObj.init(xPos, yPos);
 		}
 	}
 
