@@ -13,6 +13,10 @@ package
 		
 		private var _timer:Number;
 		
+		//embedding sounds, images, etc
+		[Embed(source = "sfx/good.mp3")] var sfxGood:Class;
+		[Embed(source = "sfx/bad.mp3")] var sfxBad:Class;
+		
 		override public function create():void
 		{
 			someText = new FlxText(0, 0, 150, "Overwhelm!");
@@ -69,11 +73,13 @@ package
 		public function caughtObject(fallObj:FlxSprite, player:FlxSprite):void
 		{
 			fallObj.kill();
+			FlxG.play(sfxGood);
 			_player.hurt(-1);
 		}
 		
 		public function uncaughtObject(fallObj:FlxSprite, ui:FlxSprite) {
 			fallObj.kill();
+			FlxG.play(sfxBad);
 			_player.hurt(1);
 		}
 		
