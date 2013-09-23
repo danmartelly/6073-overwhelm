@@ -5,6 +5,8 @@ package
 	public class PlayState extends FlxState
 	{
 		public var someText:FlxText;
+		public var paused:Boolean;
+		public var pauseGroup:FlxGroup;
 		
 		//major game object storage
 		protected var _player:Player;
@@ -19,6 +21,10 @@ package
 		
 		override public function create():void
 		{
+			//Add objects that will appear on the pause screen to pauseGroup
+			paused = false;
+			pauseGroup = new FlxGroup();
+			
 			someText = new FlxText(0, 0, 150, "Overwhelm!");
 			add(someText);
 			_timer = 0;
@@ -49,6 +55,12 @@ package
 		
 		override public function update():void
 		{
+			//The "P" key toggles pausing. If the game is paused, only update the elements in pauseGroup.
+			if (FlxG.keys.justPressed("P"))
+				paused = !paused;
+			if (paused)
+				return pauseGroup.update();
+			
 			//collisions
 			FlxG.overlap(_fallingObjects, _player, caughtObject);
 			FlxG.collide(_ui, _player);
@@ -69,6 +81,14 @@ package
 			
 			super.update();
 		}				
+		
+		override public function draw():void
+		{
+			//If the game is paused, only draw the elements in pauseGroup
+			if (paused)
+				return pauseGroup.draw();
+			super.draw();
+		}
 		
 		public function caughtObject(fallObj:FlxSprite, player:FlxSprite):void
 		{
