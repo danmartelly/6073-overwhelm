@@ -10,8 +10,8 @@ package
 		
 		//UI 1 - Big right bar
 		protected var menuwidth:Number = 80;
-		public var upperbar:FlxSprite = new FlxSprite(0, 0);
-		public var lowerbar:FlxSprite = new FlxSprite(0, 240 - barwidth);
+		public var upperbar:FlxSprite = new FlxSprite(5, 0);
+		public var lowerbar:FlxSprite = new FlxSprite(5, 240 - barwidth);
 		public var leftbar:FlxSprite = new FlxSprite(0, 0);
 		public var rightbar:FlxSprite = new FlxSprite(320 - menuwidth, 0);
 		public var scorelabel:FlxText = new FlxText(242, 5, 40, "Score:");
@@ -45,8 +45,8 @@ package
 			rightbar.immovable = true;
 			
 			//UI 1 - Big right bar
-			upperbar.makeGraphic(320, barwidth, uicolor);
-			lowerbar.makeGraphic(320, barwidth, uicolor);
+			upperbar.makeGraphic(235, barwidth, uicolor);
+			lowerbar.makeGraphic(235, barwidth, uicolor);
 			leftbar.makeGraphic(barwidth, 240, uicolor);
 			rightbar.makeGraphic(menuwidth, 240, uicolor);
 			
