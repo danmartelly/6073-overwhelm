@@ -98,8 +98,12 @@ package
 		override public function draw():void
 		{
 			//If the game is paused, only draw the elements in pauseGroup
-			if (paused)
+			if (paused) {
+				pauseGroup.setAll("alpha", 0.5);
+				pauseText.alpha = 1.0;
 				return pauseGroup.draw();
+			}
+			pauseGroup.setAll("alpha", 1.0);
 			super.draw();
 		}
 		
