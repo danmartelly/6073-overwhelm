@@ -17,8 +17,7 @@ package
 			angularVelocity = 10;
 		}
 		
-		public function init(xPos:int, yPos:int):void
-		{
+		public function init(xPos:int, yPos:int):void {
 			x = xPos;
 			y = yPos;
 			velocity.y = 0;
