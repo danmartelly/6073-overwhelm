@@ -20,11 +20,7 @@ package
 		[Embed(source = "sfx/bad.mp3")] var sfxBad:Class;
 		
 		override public function create():void
-		{
-			//Add objects that will appear on the pause screen to pauseGroup
-			paused = false;
-			pauseGroup = new FlxGroup();
-			
+		{	
 			someText = new FlxText(0, 0, 150, "Overwhelm!");
 			add(someText);
 			_timer = 0;
@@ -44,6 +40,19 @@ package
 			//Adding UI
 			_ui = new UI();
 			add(_ui);
+			
+			//Add objects that will appear on the pause screen to pauseGroup
+			paused = false;
+			pauseGroup = new FlxGroup();
+			pauseGroup.add(_ui.upperbar);
+			pauseGroup.add(_ui.lowerbar);
+			pauseGroup.add(_ui.leftbar);
+			pauseGroup.add(_ui.rightbar);
+			pauseGroup.add(_ui.scorelabel);
+			pauseGroup.add(_ui.scorevallabel);
+			pauseGroup.add(_ui.liveslabel);
+			pauseGroup.add(_ui.livesvallabel);
+			pauseGroup.add(_ui.goallabel);
 		}
 		
 		override public function destroy():void
@@ -117,5 +126,4 @@ package
 			fallObj.init(xPos, yPos);
 		}
 	}
-
 }

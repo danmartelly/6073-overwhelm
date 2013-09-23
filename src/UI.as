@@ -10,16 +10,16 @@ package
 		
 		//UI 1 - Big right bar
 		protected var menuwidth:Number = 80;
-		protected var upperbar:FlxSprite = new FlxSprite(0, 0);
-		protected var lowerbar:FlxSprite = new FlxSprite(0, 240 - barwidth);
-		protected var leftbar:FlxSprite = new FlxSprite(0, 0);
-		protected var rightbar:FlxSprite = new FlxSprite(320 - menuwidth, 0);
-		protected var scorelabel:FlxText = new FlxText(242, 5, 40, "Score:");
-		protected var scorevallabel:FlxText = new FlxText(248, 15, 60, "INFINITY!!!");
-		protected var liveslabel:FlxText = new FlxText(242, 30, 40, "Lives:");
-		protected var livesvallabel:FlxText = new FlxText(248, 40, 60, "INFINITY!!!");
-		protected var goallabel:FlxText = new FlxText(268, 205, 40, "Goal:");
-		protected var goalimage:FlxSprite = new FlxSprite(277, 220);
+		public var upperbar:FlxSprite = new FlxSprite(0, 0);
+		public var lowerbar:FlxSprite = new FlxSprite(0, 240 - barwidth);
+		public var leftbar:FlxSprite = new FlxSprite(0, 0);
+		public var rightbar:FlxSprite = new FlxSprite(320 - menuwidth, 0);
+		public var scorelabel:FlxText = new FlxText(242, 5, 40, "Score:");
+		public var scorevallabel:FlxText = new FlxText(248, 15, 60, "INFINITY!!!");
+		public var liveslabel:FlxText = new FlxText(242, 30, 40, "Lives:");
+		public var livesvallabel:FlxText = new FlxText(248, 40, 60, "INFINITY!!!");
+		public var goallabel:FlxText = new FlxText(268, 205, 40, "Goal:");
+		public var goalimage:FlxSprite = new FlxSprite(277, 220);
 		
 		
 		//UI 2 - Big lower bar
@@ -77,5 +77,4 @@ package
 			livesvallabel.text = "" + health;
 		}
 	}
-
 }
