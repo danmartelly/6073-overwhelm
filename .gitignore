@@ -1,1 +1,8 @@
 /bin/*
+/flixel/*
+/lib/*
+/obj/*
+/bin-debug/*
+/html-template/*
+*.as3proj
+

@@ -7,6 +7,7 @@ package
 		public var someText:FlxText;
 		public var paused:Boolean;
 		public var pauseGroup:FlxGroup;
+		public var pauseText:FlxText;
 		
 		//major game object storage
 		protected var _player:Player;
@@ -43,7 +44,10 @@ package
 			
 			//Add objects that will appear on the pause screen to pauseGroup
 			paused = false;
+			pauseText = new FlxText(85, 115, 150, "Game Paused");
+			
 			pauseGroup = new FlxGroup();
+			pauseGroup.add(pauseText);
 			pauseGroup.add(_ui.upperbar);
 			pauseGroup.add(_ui.lowerbar);
 			pauseGroup.add(_ui.leftbar);
