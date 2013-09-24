@@ -39,6 +39,11 @@ package
 				super.hurt(damage);
 			}
 		}
+		
+		override public function kill():void
+		{
+			FlxG.switchState(new EndState(score));
+		}
 	}
 
 }
