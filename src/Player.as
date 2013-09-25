@@ -11,18 +11,22 @@ package
 		public var player_height:Number = 10;
 		public var player_width:Number = 20;
 		
+		
+		[Embed(source = "assets/resized/player.png")] private var playerImg:Class;
+		
 		//keeps track of which objects the player will get points for catching
 		public var player_target:FallingObject;
 		
 		public function Player(X:int,Y:int,target:FallingObject) 
 		{
 			super(X, Y);
-			makeGraphic(player_width, player_height, 0xffff0000);
+			//makeGraphic(player_width, player_height, 0xffff0000);
 			maxVelocity.x = 160;
 			drag.x = maxVelocity.x * 6;
 			score = 0;
 			health = 5;
 			player_target=target;
+			loadGraphic(playerImg, false,false,20,10);
 		}
 		
 		override public function update():void
