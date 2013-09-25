@@ -17,15 +17,15 @@ package
 			Mouse.cursor = MouseCursor.AUTO;
 			Mouse.show();
 			
-			endText1 = new FlxText(85, 30, 150, "GAME OVER!");
-			endText1.alignment = "center";
+			endText1 = new FlxText(240, 60, 300, "GAME OVER!");
+			endText1.size = 24;
+			endText1.shadow = 0xFF0000;
 			add(endText1);
-			endText2 = new FlxText(85, 40, 150, "Your score: " + s);
-			endText2.alignment = "center";
+			endText2 = new FlxText(290, 100, 150, "Your score: " + s);
 			add(endText2);
 			
-			playButton = new FlxButton(120, 60, "Play Again?", playagain);
-			menuButton = new FlxButton(120, 90, "Back to Menu", showMenu);
+			playButton = new FlxButton(285, 120, "Play Again?", playagain);
+			menuButton = new FlxButton(285, 140, "Back to Menu", showMenu);
 			
 			add(playButton);
 			add(menuButton);

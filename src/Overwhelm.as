@@ -13,7 +13,7 @@ package
 		
 		public function Overwhelm() 
 		{
-			super(320, 240, MenuState, 2);
+			super(640, 480, MenuState, 1);
 		}
 		
 	}

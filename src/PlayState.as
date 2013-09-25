@@ -9,6 +9,9 @@ package
 		public var pauseGroup:FlxGroup;
 		public var pauseText:FlxText;
 		public var keyText:FlxText;
+		public var shipImg:FlxSprite = new FlxSprite( -70, -170);
+		public var bgImg:FlxSprite = new FlxSprite(0, 0);
+		
 		
 		//major game object storage
 		protected var _player:Player;
@@ -20,9 +23,12 @@ package
 		//embedding sounds, images, etc
 		[Embed(source = "sfx/good.mp3")] var sfxGood:Class;
 		[Embed(source = "sfx/bad.mp3")] var sfxBad:Class;
+		[Embed(source = "assets/ship.png")] private var ImgShip:Class;		
 		
 		override public function create():void
 		{	
+			bgImg.makeGraphic(640, 480, 0xffCFEBED);
+			add(bgImg);
 			someText = new FlxText(0, 0, 150, "Overwhelm!");
 			add(someText);
 			_timer = 0;
@@ -34,7 +40,7 @@ package
 			targetObj.init(0,0,0,["fish",""]);
 			
 			//UI 1 - Big right bar
-			_player = new Player(115, 225, targetObj);
+			_player = new Player(240, 460, targetObj);
 			//UI 2 - Big bottom bar
 			//_player = new Player(155, 200);
 			add(_player);
@@ -47,11 +53,17 @@ package
 			_ui = new UI();
 			add(_ui);
 			
+			shipImg.loadGraphic(ImgShip);
+			shipImg.acceleration.y = 50
+			add(shipImg);
+			
 			//Add objects that will appear on the pause screen to pauseGroup
 			paused = false;
-			pauseText = new FlxText(85, 95, 320, "Game Paused");
+			pauseText = new FlxText(170, 190, 320, "Game Paused");
+			pauseText.alignment = "center";
 			pauseText.size = 18;
-			keyText = new FlxText(110, 125, 320, "'P' to unpause \n'Q' to quit to menu");
+			keyText = new FlxText(170, 210, 320, "'P' to unpause \n'Q' to quit to menu");
+			keyText.alignment = "center";
 			
 			pauseGroup = new FlxGroup();
 			pauseGroup.add(pauseText);
@@ -78,6 +90,10 @@ package
 		{
 			//The "P" key toggles pausing. The "Q" key quits to menu when game is paused.
 			//If the game is paused, only update the elements in pauseGroup.
+			if (shipImg.y > -170) 
+				shipImg.acceleration.y = -50;
+			if (shipImg.y < -170)
+				shipImg.acceleration.y = 50;
 			if (FlxG.keys.justPressed("P"))
 				paused = !paused;
 			if (paused) {

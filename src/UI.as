@@ -5,20 +5,20 @@ package
 	public class UI extends FlxGroup
 	{
 		//UI Vars
-		protected var barwidth:Number = 5;
+		protected var barwidth:Number = 10;
 		protected var uicolor:Number = 0xff009999;
 		
 		//UI 1 - Big right bar
-		protected var menuwidth:Number = 80;
+		protected var menuwidth:Number = 160;
 		public var upperbar:FlxSprite = new FlxSprite(5, 0);
-		public var lowerbar:FlxSprite = new FlxSprite(5, 240 - barwidth);
+		public var lowerbar:FlxSprite = new FlxSprite(5, 480 - barwidth);
 		public var leftbar:FlxSprite = new FlxSprite(0, 0);
-		public var rightbar:FlxSprite = new FlxSprite(320 - menuwidth, 0);
-		public var scorelabel:FlxText = new FlxText(242, 5, 40, "Score:");
-		public var scorevallabel:FlxText = new FlxText(248, 15, 60, "INFINITY!!!");
-		public var liveslabel:FlxText = new FlxText(242, 30, 40, "Lives:");
-		public var livesvallabel:FlxText = new FlxText(248, 40, 60, "INFINITY!!!");
-		public var goallabel:FlxText = new FlxText(268, 205, 40, "Goal:");
+		public var rightbar:FlxSprite = new FlxSprite(640 - menuwidth, 0);
+		public var scorelabel:FlxText = new FlxText(484, 5, 40, "Score:");
+		public var scorevallabel:FlxText = new FlxText(496, 15, 60, "INFINITY!!!");
+		public var liveslabel:FlxText = new FlxText(484, 30, 40, "Lives:");
+		public var livesvallabel:FlxText = new FlxText(496, 40, 60, "INFINITY!!!");
+		public var goallabel:FlxText = new FlxText(536, 205, 40, "Goal:");
 		public var goalimage:FallingObject = new FallingObject();//277, 220);
 		
 		
@@ -45,10 +45,10 @@ package
 			rightbar.immovable = true;
 			
 			//UI 1 - Big right bar
-			upperbar.makeGraphic(235, barwidth, uicolor);
-			lowerbar.makeGraphic(235, barwidth, uicolor);
-			leftbar.makeGraphic(barwidth, 240, uicolor);
-			rightbar.makeGraphic(menuwidth, 240, uicolor);
+			upperbar.makeGraphic(480, barwidth, uicolor);
+			lowerbar.makeGraphic(480, barwidth, uicolor);
+			leftbar.makeGraphic(barwidth, 480, uicolor);
+			rightbar.makeGraphic(menuwidth, 480, uicolor);
 			
 			//UI 2 - Big lower bar
 			/*
@@ -59,7 +59,7 @@ package
 			*/
 			
 			//goalimage.makeGraphic(10, 10, 0xffaaaaaa);
-			goalimage.init(270,215,0,["fish",""]);
+			goalimage.init(540,215,0,["fish",""]);
 			
 			this.add(upperbar);
 			this.add(lowerbar);

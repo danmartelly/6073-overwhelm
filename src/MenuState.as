@@ -14,14 +14,14 @@ package {
 			Mouse.cursor = MouseCursor.AUTO;
 			Mouse.show();
 			
-			title = new FlxText(80, 20, 320, "Overwhelm!");
+			title = new FlxText(240, 60, 320, "Overwhelm!");
 			title.size = 24;
 			title.shadow = 0xFF0000;
 			
-			newButton = new FlxButton(120, 60, "New Game", newGame);
-			instructionsButton = new FlxButton(120, 90, "Instructions", showInstructions);
-			optionsButton = new FlxButton(120, 120, "Options", showOptions);
-			creditsButton = new FlxButton(120, 150, "Credits", showCredits);
+			newButton = new FlxButton(290, 100, "New Game", newGame);
+			instructionsButton = new FlxButton(290, 130, "Instructions", showInstructions);
+			optionsButton = new FlxButton(290, 160, "Options", showOptions);
+			creditsButton = new FlxButton(290, 190, "Credits", showCredits);
 			
 			add(title);
 			add(newButton);
