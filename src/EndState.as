@@ -1,6 +1,9 @@
 package  
 {
 	import org.flixel.*;
+	import flash.ui.Mouse;
+	import flash.ui.MouseCursor;
+	
 	public class EndState extends FlxState
 	{
 		public var fscore:Number;
@@ -11,6 +14,9 @@ package
 		
 		public function EndState(s:Number) 
 		{
+			Mouse.cursor = MouseCursor.AUTO;
+			Mouse.show();
+			
 			endText1 = new FlxText(85, 30, 150, "GAME OVER!");
 			endText1.alignment = "center";
 			add(endText1);
@@ -28,6 +34,7 @@ package
 		
 		public function playagain():void
 		{
+			Mouse.hide();
 			FlxG.switchState(new PlayState());
 		}
 		

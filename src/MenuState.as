@@ -1,5 +1,7 @@
 package {
 	import org.flixel.*;
+	import flash.ui.Mouse;
+	import flash.ui.MouseCursor;
 	
 	public class MenuState extends FlxState {
 		public var title:FlxText;
@@ -9,6 +11,9 @@ package {
 		public var creditsButton:FlxButton;
 
 		public function MenuState() {
+			Mouse.cursor = MouseCursor.AUTO;
+			Mouse.show();
+			
 			title = new FlxText(80, 20, 320, "Overwhelm!");
 			title.size = 24;
 			title.shadow = 0xFF0000;
@@ -26,6 +31,7 @@ package {
 		}
 		
 		public function newGame():void {
+			Mouse.hide();
 			FlxG.switchState(new PlayState());
 		}
 		
