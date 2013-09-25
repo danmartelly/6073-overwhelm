@@ -131,7 +131,10 @@ package
 				var newFallObj:FallingObject = new FallingObject();
 				_fallingObjects.add(newFallObj);
 			}
-			fallObj.init(xPos, yPos);
+			
+			var categories:Array = new Array();
+			categories.push(FlxG.getRandom(fallObj.possibleAnimals)); categories.push(FlxG.getRandom(fallObj.possibleColors));
+			fallObj.init(xPos, yPos, categories);
 		}
 	}
 }
