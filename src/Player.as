@@ -1,5 +1,7 @@
 package  
 {
+	import flash.sensors.Accelerometer;
+	
 	import org.flixel.*;
 	
 	public class Player extends FlxSprite
@@ -9,7 +11,10 @@ package
 		public var player_height:Number = 10;
 		public var player_width:Number = 20;
 		
-		public function Player(X:int,Y:int) 
+		//keeps track of which objects the player will get points for catching
+		public var player_target:FallingObject;
+		
+		public function Player(X:int,Y:int,target:FallingObject) 
 		{
 			super(X, Y);
 			makeGraphic(player_width, player_height, 0xffff0000);
@@ -17,6 +22,7 @@ package
 			drag.x = maxVelocity.x * 6;
 			score = 0;
 			health = 5;
+			player_target=target;
 		}
 		
 		override public function update():void
@@ -27,6 +33,16 @@ package
 				acceleration.x = -maxVelocity.x*4;
 			if(FlxG.keys.RIGHT)
 				acceleration.x = maxVelocity.x*4;
+		}
+		
+		public function setTarget(newTarget:FallingObject):void
+		{
+			player_target=newTarget;
+		}
+		
+		public function getTarget():FallingObject
+		{
+			return player_target;
 		}
 		
 		override public function hurt(damage:Number):void

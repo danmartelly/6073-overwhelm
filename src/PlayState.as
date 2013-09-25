@@ -28,8 +28,12 @@ package
 			
 			//Adding the player.
 			
+			//giving the player a target
+			var targetObj=new FallingObject();
+			targetObj.init(0,0,["fish",""]);
+			
 			//UI 1 - Big right bar
-			_player = new Player(115, 225);
+			_player = new Player(115, 225, targetObj);
 			//UI 2 - Big bottom bar
 			//_player = new Player(155, 200);
 			add(_player);
@@ -107,17 +111,37 @@ package
 			super.draw();
 		}
 		
-		public function caughtObject(fallObj:FlxSprite, player:FlxSprite):void
+		public function caughtObject(fallObj:FallingObject, player:FlxSprite):void
 		{
 			fallObj.kill();
-			FlxG.play(sfxGood);
-			_player.hurt(-1);
+			var target:FallingObject=_player.getTarget();
+			var targetCat1:String=target.categories[0];
+			var targetCat2:String=target.categories[1];
+			var category1:String=fallObj.categories[0];
+			var category2:String=fallObj.categories[1];
+			if (targetCat1==category1 || targetCat2==category2){
+				//only has positive effect if it's the correct target.
+				FlxG.play(sfxGood);
+				_player.hurt(-1);				
+			} else {
+				//otherwise bad!!
+				FlxG.play(sfxBad);
+				_player.hurt(1);				
+			}
 		}
 		
-		public function uncaughtObject(fallObj:FlxSprite, ui:FlxSprite) {
+		public function uncaughtObject(fallObj:FallingObject, ui:FlxSprite):void {
 			fallObj.kill();
-			FlxG.play(sfxBad);
-			_player.hurt(1);
+			var target:FallingObject=_player.getTarget();
+			var targetCat1:String=target.categories[0];
+			var targetCat2:String=target.categories[1];
+			var category1:String=fallObj.categories[0];
+			var category2:String=fallObj.categories[1];
+			if (targetCat1==category1 || targetCat2==category2){
+				//only bad if it was a target
+				FlxG.play(sfxBad);
+				_player.hurt(1);				
+			}
 		}
 		
 		public function makeFallingObject():void
