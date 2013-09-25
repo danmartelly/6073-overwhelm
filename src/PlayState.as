@@ -16,7 +16,7 @@ package
 		protected var _ui:UI;
 		
 		private var _timer:Number;
-		
+		private var _counter:int;
 		//embedding sounds, images, etc
 		[Embed(source = "sfx/good.mp3")] var sfxGood:Class;
 		[Embed(source = "sfx/bad.mp3")] var sfxBad:Class;
@@ -102,8 +102,16 @@ package
 			if (_timer > limit)
 			{
 				_timer = 0;
-				makeFallingObject();
+				_counter +=1;
+				if (_counter > 20){
+					makeFallingObject(200);
+				}
+				else if (_counter > 10){
+					makeFallingObject(80);
+				}
+				makeFallingObject(80);
 			}
+
 			
 			super.update();
 		}				
@@ -154,7 +162,7 @@ package
 			}
 		}
 		
-		public function makeFallingObject():void
+		public function makeFallingObject(accel:int):void
 		{
 			var xPos:Number = FlxG.random()*200;
 			var yPos:Number = 20;
@@ -168,7 +176,6 @@ package
 			
 			var categories:Array = new Array();
 			categories.push(FlxG.getRandom(fallObj.possibleAnimals)); categories.push(FlxG.getRandom(fallObj.possibleColors));
-			var accel:int=80;
 			fallObj.init(xPos, yPos, accel, categories);
 		}
 	}
