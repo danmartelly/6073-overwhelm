@@ -92,11 +92,11 @@ package
 			embeddedObjects["mouse"] = mouseImages;
 		}
 		
-		public function init(xPos:int, yPos:int, categories:Array):void {
+		public function init(xPos:int, yPos:int, accel:int, categories:Array):void {
 			x = xPos;
 			y = yPos;
 			velocity.y = 0;
-			acceleration.y = 80;
+			acceleration.y = accel;
 			alive = true;
 			exists = true;
 			this.categories = categories;

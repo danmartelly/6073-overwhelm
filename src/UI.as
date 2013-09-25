@@ -19,7 +19,7 @@ package
 		public var liveslabel:FlxText = new FlxText(242, 30, 40, "Lives:");
 		public var livesvallabel:FlxText = new FlxText(248, 40, 60, "INFINITY!!!");
 		public var goallabel:FlxText = new FlxText(268, 205, 40, "Goal:");
-		public var goalimage:FlxSprite = new FlxSprite(277, 220);
+		public var goalimage:FallingObject = new FallingObject();//277, 220);
 		
 		
 		//UI 2 - Big lower bar
@@ -58,7 +58,8 @@ package
 			rightbar.makeGraphic(barwidth, 240, uicolor);
 			*/
 			
-			goalimage.makeGraphic(10, 10, 0xffaaaaaa);
+			//goalimage.makeGraphic(10, 10, 0xffaaaaaa);
+			goalimage.init(270,215,0,["fish",""]);
 			
 			this.add(upperbar);
 			this.add(lowerbar);
@@ -72,9 +73,10 @@ package
 			this.add(goalimage);
 		}
 		
-		public function updateUI(score:Number, health:Number):void {
+		public function updateUI(score:Number, health:Number, target:FallingObject):void {
 			scorevallabel.text = "" + score;
 			livesvallabel.text = "" + health;
+			goalimage=target;
 		}
 	}
 }

@@ -29,8 +29,8 @@ package
 			//Adding the player.
 			
 			//giving the player a target
-			var targetObj=new FallingObject();
-			targetObj.init(0,0,["fish",""]);
+			var targetObj:FallingObject=new FallingObject();
+			targetObj.init(0,0,0,["fish",""]);
 			
 			//UI 1 - Big right bar
 			_player = new Player(115, 225, targetObj);
@@ -84,7 +84,7 @@ package
 			FlxG.overlap(_fallingObjects, _ui, uncaughtObject);
 			
 			//update hud
-			_ui.updateUI(_player.score, _player.health);
+			_ui.updateUI(_player.score, _player.health, _player.getTarget());
 			
 			//make new falling objects
 			_timer += FlxG.elapsed;
@@ -158,7 +158,8 @@ package
 			
 			var categories:Array = new Array();
 			categories.push(FlxG.getRandom(fallObj.possibleAnimals)); categories.push(FlxG.getRandom(fallObj.possibleColors));
-			fallObj.init(xPos, yPos, categories);
+			var accel:int=80;
+			fallObj.init(xPos, yPos, accel, categories);
 		}
 	}
 }
