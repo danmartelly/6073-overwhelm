@@ -57,32 +57,32 @@ package
 			var catImages:Dictionary = new Dictionary(true);
 			catImages[""] = ImgCat;
 			catImages["brown"] = ImgCatBrown;
-			catImages["grey"] = ImgCatBrown;
-			catImages["yellow"] = ImgCatBrown;
+			catImages["grey"] = ImgCatGrey;
+			catImages["yellow"] = ImgCatYellow;
 			//dogs
 			var dogImages:Dictionary = new Dictionary(true);
 			dogImages[""] = ImgDog;
 			dogImages["brown"] = ImgDogBrown;
-			dogImages["grey"] = ImgDogBrown;
-			dogImages["yellow"] = ImgDogBrown;
+			dogImages["grey"] = ImgDogGrey;
+			dogImages["yellow"] = ImgDogYellow;
 			//fish
 			var fishImages:Dictionary = new Dictionary(true);
 			fishImages[""] = ImgFish;
 			fishImages["brown"] = ImgFishBrown;
-			fishImages["grey"] = ImgFishBrown;
-			fishImages["yellow"] = ImgFishBrown;
+			fishImages["grey"] = ImgFishGrey;
+			fishImages["yellow"] = ImgFishYellow;
 			//lizard
 			var lizardImages:Dictionary = new Dictionary(true);
 			lizardImages[""] = ImgLizard;
 			lizardImages["brown"] = ImgLizardBrown;
-			lizardImages["grey"] = ImgLizardBrown;
-			lizardImages["yellow"] = ImgLizardBrown;
+			lizardImages["grey"] = ImgLizardGrey;
+			lizardImages["yellow"] = ImgLizardYellow;
 			//mouse
 			var mouseImages:Dictionary = new Dictionary(true);
 			mouseImages[""] = ImgMouse;
 			mouseImages["brown"] = ImgMouseBrown;
-			mouseImages["grey"] = ImgMouseBrown;
-			mouseImages["yellow"] = ImgMouseBrown;
+			mouseImages["grey"] = ImgMouseGrey;
+			mouseImages["yellow"] = ImgMouseYellow;
 			//put it all together
 			embeddedObjects["test"] = ImgCat;
 			embeddedObjects["cat"] = catImages;
