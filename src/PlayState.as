@@ -8,6 +8,7 @@ package
 		public var paused:Boolean;
 		public var pauseGroup:FlxGroup;
 		public var pauseText:FlxText;
+		public var keyText:FlxText;
 		
 		//major game object storage
 		protected var _player:Player;
@@ -48,11 +49,14 @@ package
 			
 			//Add objects that will appear on the pause screen to pauseGroup
 			paused = false;
-			pauseText = new FlxText(85, 115, 150, "Game Paused");
+			pauseText = new FlxText(85, 95, 320, "Game Paused");
+			pauseText.size = 18;
+			keyText = new FlxText(110, 125, 320, "'P' to unpause \n'Q' to quit to menu");
 			
 			pauseGroup = new FlxGroup();
 			pauseGroup.add(pauseText);
-			pauseGroup.add(_ui.upperbar);
+			pauseGroup.add(keyText);
+			/*pauseGroup.add(_ui.upperbar);
 			pauseGroup.add(_ui.lowerbar);
 			pauseGroup.add(_ui.leftbar);
 			pauseGroup.add(_ui.rightbar);
@@ -60,7 +64,7 @@ package
 			pauseGroup.add(_ui.scorevallabel);
 			pauseGroup.add(_ui.liveslabel);
 			pauseGroup.add(_ui.livesvallabel);
-			pauseGroup.add(_ui.goallabel);
+			pauseGroup.add(_ui.goallabel);*/
 		}
 		
 		override public function destroy():void
@@ -72,11 +76,16 @@ package
 		
 		override public function update():void
 		{
-			//The "P" key toggles pausing. If the game is paused, only update the elements in pauseGroup.
+			//The "P" key toggles pausing. The "Q" key quits to menu when game is paused.
+			//If the game is paused, only update the elements in pauseGroup.
 			if (FlxG.keys.justPressed("P"))
 				paused = !paused;
-			if (paused)
-				return pauseGroup.update();
+			if (paused) {
+				if (FlxG.keys.justPressed("Q"))
+					FlxG.switchState(new MenuState());
+				else
+					return pauseGroup.update();
+			}
 			
 			//collisions
 			FlxG.overlap(_fallingObjects, _player, caughtObject);
@@ -105,6 +114,7 @@ package
 			if (paused) {
 				pauseGroup.setAll("alpha", 0.5);
 				pauseText.alpha = 1.0;
+				keyText.alpha = 1.0;
 				return pauseGroup.draw();
 			}
 			pauseGroup.setAll("alpha", 1.0);
