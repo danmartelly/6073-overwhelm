@@ -4,7 +4,10 @@ package
 	 
 	public class PlayState extends FlxState
 	{
-		public var someText:FlxText;
+		//some parameters
+		private var _newObjectGenerationRate:Number = 1;
+		private var _newObjectiveChangeRate:Number = 7;
+		
 		public var paused:Boolean;
 		public var pauseGroup:FlxGroup;
 		public var pauseText:FlxText;
@@ -19,6 +22,8 @@ package
 		protected var _ui:UI;
 		
 		private var _timer:Number;
+		private var _timeLastObjectDropped:Number;
+		private var _timeObjectiveLastChanged:Number;
 		private var _counter:int;
 		//embedding sounds, images, etc
 		[Embed(source = "sfx/good.mp3")] var sfxGood:Class;
@@ -29,9 +34,9 @@ package
 		{	
 			bgImg.makeGraphic(640, 480, 0xffCFEBED);
 			add(bgImg);
-			someText = new FlxText(0, 0, 150, "Overwhelm!");
-			add(someText);
 			_timer = 0;
+			_timeLastObjectDropped = -100;
+			_timeObjectiveLastChanged = -100;
 			
 			//Adding the player.
 			
@@ -113,11 +118,10 @@ package
 			
 			//make new falling objects
 			_timer += FlxG.elapsed;
-			someText.text = _timer.toString();
 			var limit:uint = 1;
-			if (_timer > limit)
+			if (_timer - _timeLastObjectDropped > _newObjectGenerationRate)
 			{
-				_timer = 0;
+				_timeLastObjectDropped = _timer;
 				_counter +=1;
 				if (_counter > 20){
 					makeFallingObject(200);
@@ -126,6 +130,11 @@ package
 					makeFallingObject(80);
 				}
 				makeFallingObject(80);
+			}
+			if (_timer - _timeObjectiveLastChanged > _newObjectiveChangeRate)
+			{
+				_timeObjectiveLastChanged = _timer;
+				
 			}
 
 			
