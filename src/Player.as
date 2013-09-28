@@ -12,7 +12,7 @@ package
 		public var player_width:Number = 20;
 		
 		
-		[Embed(source = "assets/resized/player.png")] private var playerImg:Class;
+		[Embed(source = "assets/player.png")] private var playerImg:Class;
 		
 		//keeps track of which objects the player will get points for catching
 		public var player_target:FallingObject;
@@ -26,7 +26,7 @@ package
 			score = 0;
 			health = 5;
 			player_target=target;
-			loadGraphic(playerImg, false,false,20,10);
+			loadGraphic(playerImg, false,false,70,35);
 		}
 		
 		override public function update():void

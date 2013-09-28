@@ -45,7 +45,7 @@ package
 			targetObj.init(0,0,0,["fish",""]);
 			
 			//UI 1 - Big right bar
-			_player = new Player(240, 460, targetObj);
+			_player = new Player(240, 435, targetObj);
 			//UI 2 - Big bottom bar
 			//_player = new Player(155, 200);
 			add(_player);

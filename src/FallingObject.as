@@ -5,26 +5,26 @@ package
 	
 	public class FallingObject extends FlxSprite
 	{
-		[Embed(source = "assets/resized/cat.png")] private var ImgCat:Class;
-		[Embed(source = "assets/resized/cat_brown.png")] private var ImgCatBrown:Class;
-		[Embed(source = "assets/resized/cat_grey.png")] private var ImgCatGrey:Class;
-		[Embed(source = "assets/resized/cat_yellow.png")] private var ImgCatYellow:Class;
-		[Embed(source = "assets/resized/dog.png")] private var ImgDog:Class;
-		[Embed(source = "assets/resized/dog_brown.png")] private var ImgDogBrown:Class;
-		[Embed(source = "assets/resized/dog_grey.png")] private var ImgDogGrey:Class;
-		[Embed(source = "assets/resized/dog_yellow.png")] private var ImgDogYellow:Class;
-		[Embed(source = "assets/resized/fish.png")] private var ImgFish:Class;
-		[Embed(source = "assets/resized/fish_brown.png")] private var ImgFishBrown:Class;
-		[Embed(source = "assets/resized/fish_grey.png")] private var ImgFishGrey:Class;
-		[Embed(source = "assets/resized/fish_yellow.png")] private var ImgFishYellow:Class;
-		[Embed(source = "assets/resized/lizard.png")] private var ImgLizard:Class;
-		[Embed(source = "assets/resized/lizard_brown.png")] private var ImgLizardBrown:Class;
-		[Embed(source = "assets/resized/lizard_grey.png")] private var ImgLizardGrey:Class;
-		[Embed(source = "assets/resized/lizard_yellow.png")] private var ImgLizardYellow:Class;
-		[Embed(source = "assets/resized/mouse.png")] private var ImgMouse:Class;
-		[Embed(source = "assets/resized/mouse_brown.png")] private var ImgMouseBrown:Class;
-		[Embed(source = "assets/resized/mouse_grey.png")] private var ImgMouseGrey:Class;
-		[Embed(source = "assets/resized/mouse_yellow.png")] private var ImgMouseYellow:Class;
+		[Embed(source = "assets/cat_orange.png")] private var ImgCat:Class;
+		[Embed(source = "assets/cat_brown.png")] private var ImgCatBrown:Class;
+		[Embed(source = "assets/cat_grey.png")] private var ImgCatGrey:Class;
+		[Embed(source = "assets/cat_yellow.png")] private var ImgCatYellow:Class;
+		[Embed(source = "assets/dog_orange.png")] private var ImgDog:Class;
+		[Embed(source = "assets/dog_brown.png")] private var ImgDogBrown:Class;
+		[Embed(source = "assets/dog_grey.png")] private var ImgDogGrey:Class;
+		[Embed(source = "assets/dog_yellow.png")] private var ImgDogYellow:Class;
+		[Embed(source = "assets/fish_orange.png")] private var ImgFish:Class;
+		[Embed(source = "assets/fish_brown.png")] private var ImgFishBrown:Class;
+		[Embed(source = "assets/fish_grey.png")] private var ImgFishGrey:Class;
+		[Embed(source = "assets/fish_yellow.png")] private var ImgFishYellow:Class;
+		[Embed(source = "assets/lizard_orange.png")] private var ImgLizard:Class;
+		[Embed(source = "assets/lizard_brown.png")] private var ImgLizardBrown:Class;
+		[Embed(source = "assets/lizard_grey.png")] private var ImgLizardGrey:Class;
+		[Embed(source = "assets/lizard_yellow.png")] private var ImgLizardYellow:Class;
+		[Embed(source = "assets/mouse_orange.png")] private var ImgMouse:Class;
+		[Embed(source = "assets/mouse_brown.png")] private var ImgMouseBrown:Class;
+		[Embed(source = "assets/mouse_grey.png")] private var ImgMouseGrey:Class;
+		[Embed(source = "assets/mouse_yellow.png")] private var ImgMouseYellow:Class;
 		public var speed:Number;
 		private var embeddedObjects:Dictionary; // an array of two strings [animal, color]
 		public var categories:Array;
