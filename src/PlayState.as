@@ -64,24 +64,16 @@ package
 			
 			//Add objects that will appear on the pause screen to pauseGroup
 			paused = false;
-			pauseText = new FlxText(170, 190, 320, "Game Paused");
+			pauseText = new FlxText(160, 190, 320, "Game Paused");
 			pauseText.alignment = "center";
-			pauseText.size = 18;
-			keyText = new FlxText(170, 210, 320, "'P' to unpause \n'Q' to quit to menu");
+			pauseText.size = 36;
+			keyText = new FlxText(160, 235, 320, "'P' to unpause \n'Q' to quit to menu");
 			keyText.alignment = "center";
+			keyText.size *= 2;
 			
 			pauseGroup = new FlxGroup();
 			pauseGroup.add(pauseText);
 			pauseGroup.add(keyText);
-			/*pauseGroup.add(_ui.upperbar);
-			pauseGroup.add(_ui.lowerbar);
-			pauseGroup.add(_ui.leftbar);
-			pauseGroup.add(_ui.rightbar);
-			pauseGroup.add(_ui.scorelabel);
-			pauseGroup.add(_ui.scorevallabel);
-			pauseGroup.add(_ui.liveslabel);
-			pauseGroup.add(_ui.livesvallabel);
-			pauseGroup.add(_ui.goallabel);*/
 		}
 		
 		override public function destroy():void
@@ -189,7 +181,7 @@ package
 		
 		public function makeFallingObject(accel:int):void
 		{
-			var xPos:Number = FlxG.random()*200;
+			var xPos:Number = FlxG.random()*400;
 			var yPos:Number = 20;
 			var fallObj:FallingObject = (_fallingObjects.recycle(FallingObject) as FallingObject);
 			
