@@ -41,8 +41,14 @@ package
 			//Adding the player.
 			
 			//giving the player a target
-			var targetObj:FallingObject=new FallingObject();
-			targetObj.init(0,0,0,["fish",""]);
+			var targetObj:Array=new Array();
+			for(var i:int=0;i<5;i++){
+				targetObj[i]=new FallingObject();
+			}
+			targetObj[0].init(460,215,0,["fish",""]);
+			targetObj[1].init(500,215,0,["fish","brown"]);
+			targetObj[2].init(540,215,0,["fish","grey"]);
+			targetObj[3].init(580,215,0,["fish","yellow"]);
 			
 			//UI 1 - Big right bar
 			_player = new Player(240, 435, targetObj);
@@ -149,33 +155,44 @@ package
 		public function caughtObject(fallObj:FallingObject, player:FlxSprite):void
 		{
 			fallObj.kill();
-			var target:FallingObject=_player.getTarget();
-			var targetCat1:String=target.categories[0];
-			var targetCat2:String=target.categories[1];
 			var category1:String=fallObj.categories[0];
 			var category2:String=fallObj.categories[1];
-			if (targetCat1==category1 || targetCat2==category2){
+			var isGoal:Boolean=false;
+			for(var i:int=0;i<5; i++){
+				var target:FallingObject=_player.getTarget()[i];
+				var targetCat1:String=target.categories[0];
+				var targetCat2:String=target.categories[1];
+				if (targetCat1==category1 && targetCat2==category2){
+					//only has positive effect if it's the correct target.
+					isGoal=true;
+					break;
+				}
+			}
+			if (isGoal){
 				//only has positive effect if it's the correct target.
 				FlxG.play(sfxGood);
-				_player.hurt(-1);				
+				_player.hurt(-1);
 			} else {
 				//otherwise bad!!
 				FlxG.play(sfxBad);
-				_player.hurt(1);				
+				_player.hurt(1);
 			}
 		}
 		
 		public function uncaughtObject(fallObj:FallingObject, ui:FlxSprite):void {
 			fallObj.kill();
-			var target:FallingObject=_player.getTarget();
-			var targetCat1:String=target.categories[0];
-			var targetCat2:String=target.categories[1];
 			var category1:String=fallObj.categories[0];
 			var category2:String=fallObj.categories[1];
-			if (targetCat1==category1 || targetCat2==category2){
-				//only bad if it was a target
-				FlxG.play(sfxBad);
-				_player.hurt(1);				
+			for(var i:int=0; i<5; i++){
+				var target:FallingObject=_player.getTarget()[i];
+				var targetCat1:String=target.categories[0];
+				var targetCat2:String=target.categories[1];
+				if (targetCat1==category1 && targetCat2==category2){
+					//only bad if it was a target
+					FlxG.play(sfxBad);
+					_player.hurt(1);	
+					break;
+				}
 			}
 		}
 		

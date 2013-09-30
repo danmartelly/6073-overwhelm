@@ -15,9 +15,9 @@ package
 		[Embed(source = "assets/player.png")] private var playerImg:Class;
 		
 		//keeps track of which objects the player will get points for catching
-		public var player_target:FallingObject;
+		public var player_target:Array;
 		
-		public function Player(X:int,Y:int,target:FallingObject) 
+		public function Player(X:int,Y:int,target:Array) 
 		{
 			super(X, Y);
 			//makeGraphic(player_width, player_height, 0xffff0000);
@@ -39,12 +39,12 @@ package
 				acceleration.x = maxVelocity.x*4;
 		}
 		
-		public function setTarget(newTarget:FallingObject):void
+		public function setTarget(newTarget:Array):void
 		{
 			player_target=newTarget;
 		}
 		
-		public function getTarget():FallingObject
+		public function getTarget():Array
 		{
 			return player_target;
 		}
