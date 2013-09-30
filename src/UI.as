@@ -4,6 +4,9 @@ package
 	
 	public class UI extends FlxGroup
 	{
+		
+		[Embed(source = "assets/life.png")] private var heartImage:Class;
+		
 		//UI Vars
 		protected var barwidth:Number = 10;
 		protected var uicolor:Number = 0xff009999;
@@ -20,6 +23,7 @@ package
 		public var livesvallabel:FlxText = new FlxText(496, 40, 60, "INFINITY!!!");
 		public var goallabel:FlxText = new FlxText(536, 205, 40, "Goal:");
 		public var goalimage:Array = new Array();//277, 220);
+		public var lifeimage:Array = new Array();
 		
 		
 		//UI 2 - Big lower bar
@@ -65,7 +69,11 @@ package
 			goalimage[0].init(520,220,0,["fish",""]);
 			goalimage[1].init(560,220,0,["fish","brown"]);
 			goalimage[2].init(520,260,0,["fish","grey"]);
-			goalimage[3].init(560,260,0,["fish","yellow"]);
+			goalimage[3].init(560, 260, 0, ["fish", "yellow"]);
+			
+			for (var i:int = 0; i < 5; i ++) {
+				lifeimage[i] = new FlxSprite(490 + 20 * i, 45, heartImage);
+			}
 			
 			this.add(upperbar);
 			this.add(lowerbar);
@@ -74,16 +82,25 @@ package
 			this.add(scorelabel);
 			this.add(scorevallabel);
 			this.add(liveslabel);
-			this.add(livesvallabel);
+			//this.add(livesvallabel);
 			this.add(goallabel);
 			for(var k:int=0; k<5; k++){
 				this.add(goalimage[k]);
+			}
+			for(var k:int=0; k<5; k++){
+				this.add(lifeimage[k]);
 			}
 		}
 		
 		public function updateUI(score:Number, health:Number, target:Array):void {
 			scorevallabel.text = "" + score;
-			livesvallabel.text = "" + health;
+			//livesvallabel.text = "" + health;
+			for (var k:int = 0; k < 5; k++) {
+				this.remove(lifeimage[k]);
+			}
+			for (var k:int = 0; k < health; k++) {
+				this.add(lifeimage[k]);
+			}
 			goalimage=target;
 		}
 	}
